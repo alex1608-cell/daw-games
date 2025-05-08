@@ -99,8 +99,23 @@ public class JuegoController {
 	    }
 	    return ResponseEntity.ok(juegos);
 	}
+	
+	// POr plataforma
+	
+	@GetMapping("/plataforma/{plataforma}")
+	public ResponseEntity<?> buscarPlataforma(@PathVariable String plataforma) {
+	    if (plataforma == null || plataforma.trim().isEmpty()) {
+	        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("La plataforma no puede ser vacía.");
+	    }
+	    List<Juego> juegos = this.juegoService.buscarPlataforma(plataforma);
+	    if (juegos.isEmpty()) {
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontraron juegos para la plataforma: " + plataforma);
+	    }
+	    return ResponseEntity.ok(juegos);
+	}
 
-	// Juegos por plataforma
+
+	// Juegos por nombre
 	
 	@GetMapping("/nombre/{nombre}")
 	public ResponseEntity<?> buscarPorNombre(@PathVariable String nombre) {

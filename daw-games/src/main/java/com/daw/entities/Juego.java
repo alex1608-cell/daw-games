@@ -28,8 +28,8 @@ import jakarta.persistence.Table;
 		@Column(name = "genero")
 		private String genero;
 		
-		@Column(name = "plataforma")
-		private String plataforma;
+		@Column(name = "plataformas")
+		private String plataformas;
 		
 		@Column(name = "precio")
 		private double precio;
@@ -43,6 +43,7 @@ import jakarta.persistence.Table;
 		@Enumerated(EnumType.STRING)
 		private Tipo tipo;
 		
+		@Column(name = "completado")
 		private boolean completado;
 		
 		
@@ -65,10 +66,10 @@ import jakarta.persistence.Table;
 			this.genero = genero;
 		}
 		public String getPlataforma() {
-			return plataforma;
+			return plataformas;
 		}
-		public void setPlataforma(String plataforma) {
-			this.plataforma = plataforma;
+		public void setPlataforma(String plataformas) {
+			this.plataformas = plataformas;
 		}
 		public double getPrecio() {
 			return precio;
